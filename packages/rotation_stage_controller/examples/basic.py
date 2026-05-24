@@ -18,21 +18,21 @@ def log_step(message: str) -> None:
 def main() -> None:
     configure_logging()
     log_step("Connecting to rotation stage on COM13")
-    stage = RotationStage.connect("COM13", baudrate=115200)
+    stage = RotationStage.connect("COM14", baudrate=115200)
     log_step("Connection established")
     try:
-        log_step("Starting homing cycle")
-        stage.home()
-        stage.wait(timeout=60.0)
-        log_step("Homing complete")
+        # log_step("Starting homing cycle")
+        # stage.home()
+        # stage.wait(timeout=60.0)
+        # log_step("Homing complete")
 
         log_step("Moving to 90.0 deg")
-        stage.move_to(90)
+        stage.move_to(90, feed=600)
         stage.wait(timeout=30.0)
         log_step("Reached 90.0 deg")
 
         log_step("Rotating by -15.0 deg")
-        stage.rotate(-15)
+        stage.rotate(-15, feed=600)
         stage.wait(timeout=30.0)
         log_step("Relative move complete")
 

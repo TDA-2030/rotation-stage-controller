@@ -17,7 +17,7 @@ class RotationStageTimeout(RotationStageError):
 
 @dataclass(slots=True)
 class _StageConfig:
-    axis: str = "X"
+    axis: str = "A"
     min_angle: float = 0.0
     max_angle: float = 360.0
     default_feed: float = 1200.0
